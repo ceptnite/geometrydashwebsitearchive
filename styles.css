@@ -83,6 +83,12 @@ a:hover{ color:var(--text); text-decoration:underline; }
 /* Utility small tweaks */
 .about{ margin-top:1rem; }
 
+/* Tables: ensure readable white text on dark background and tweak striping */
+.table, .table th, .table td { color: #ffffff; }
+.table thead th { color: #ffffff; border-bottom-color: rgba(255,255,255,0.12); }
+.table.table-striped tbody tr:nth-of-type(odd) { background-color: rgba(255,255,255,0.04); }
+.table.table-striped tbody tr:nth-of-type(even) { background-color: transparent; }
+
 /* Modern site navbar */
 .site-navbar{
     background: rgba(17,24,32,0.45);
