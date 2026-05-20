@@ -1,0 +1,107 @@
+:root{
+    --bg: #2276b2;
+    --text: #ffffff;
+    --accent: #7ebbe7;
+    --panel-bg: #c8c8c8;
+    --muted-link: #eaf4fb;
+}
+
+/* Page base */
+body{
+    background:var(--bg);
+    color:var(--text);
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    line-height:1.5;
+}
+
+/* Links: concise, readable states */
+a{ color:var(--muted-link); text-decoration:none; }
+a:visited{ color:var(--accent); }
+a:hover{ color:var(--text); text-decoration:underline; }
+
+/* Simple, responsive accordion */
+.accordion-item{
+    max-width:900px;
+    margin:0.5rem auto;
+    border-radius:8px;
+    overflow:hidden;
+    box-shadow:0 6px 20px rgba(0,0,0,0.06);
+    border:1px solid rgba(7,35,58,0.06);
+    background:transparent;
+}
+
+.accordion{
+    background: linear-gradient(180deg,#8fbfe8,#7ebbe7);
+    color:#07233a;
+    cursor:pointer;
+    padding:1rem 1.25rem;
+    width:100%;
+    box-sizing:border-box;
+    text-align:left;
+    border:0;
+    position:relative;
+    margin:0;
+    transition:background .25s ease, box-shadow .25s ease, transform .12s ease, border .2s ease;
+    border-radius:0;
+    box-shadow:none;
+    z-index:1;
+}
+.accordion::after{
+    content:'\25BE';
+    font-size:1.05rem;
+    font-weight:700;
+    position:absolute;
+    right:1rem;
+    top:50%;
+    transform:translateY(-50%);
+    transition:transform .25s ease;
+}
+.accordion.active,.accordion:hover{ background:var(--accent); }
+.accordion.active::after{ transform:translateY(-50%) rotate(180deg); }
+
+.accordion:focus-visible{ outline:3px solid rgba(94,154,203,.45); outline-offset:3px; }
+
+.panel{
+    padding:0 1.125rem 0.75rem 1.125rem;
+    background:var(--panel-bg);
+    color:#222;
+    max-height:0;
+    width:100%;
+    box-sizing:border-box;
+    margin:0;
+    overflow:hidden;
+    transition:max-height .45s cubic-bezier(.2,.8,.2,1), padding .2s ease, box-shadow .2s ease, border .2s ease;
+    border-radius:0;
+}
+
+.panel p{ margin:0.75rem 0; }
+
+/* subtle seam and inner shadow to visually join the button and panel */
+.accordion.active{ box-shadow:0 8px 20px rgba(0,0,0,0.12); border-bottom:1px solid rgba(7,35,58,0.04); }
+.panel{ border:1px solid rgba(7,35,58,0.06); border-top:none; box-shadow:inset 0 6px 12px rgba(0,0,0,0.03); }
+
+/* Utility small tweaks */
+.about{ margin-top:1rem; }
+
+/* Modern site navbar */
+.site-navbar{
+    background: rgba(17,24,32,0.45);
+    position: sticky;
+    top: 0;
+    z-index: 1050;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+.site-navbar .container{ display:flex; align-items:center; }
+.site-logo{ height:48px; transition:transform .18s ease, opacity .18s ease; }
+.site-navbar .nav-link{ color:rgba(255,255,255,0.92); position:relative; transition:color .15s ease; margin-left:0.6rem; }
+.site-navbar .nav-link::after{ content:""; position:absolute; left:0; right:0; bottom:-6px; height:2px; background:linear-gradient(90deg,var(--accent),#ffffff); transform:scaleX(0); transform-origin:left; transition:transform .18s ease; border-radius:2px; opacity:.95; }
+.site-navbar .nav-link:hover::after,
+.site-navbar .nav-link:focus::after,
+.site-navbar .nav-item.active .nav-link::after{ transform:scaleX(1); }
+.site-navbar .navbar-toggler{ border:0; background:transparent; }
+.navbar-dark .navbar-toggler-icon{ filter:brightness(1.6) invert(1) sepia(0) saturate(0); }
+@media (max-width:767px){ .site-logo{ height:40px; } .site-navbar .nav-link::after{ display:none; } }
+
+
